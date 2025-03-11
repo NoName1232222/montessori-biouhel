@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objednávka Bio Uhlí - Montessori Škola u ZOO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .container:hover {
+            transform: scale(1.02);
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+        select, input[type="text"], input[type="email"], input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        select:focus, input[type="text"]:focus, input[type="email"]:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+            outline: none;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+        .info-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #2196F3;
+            color: white;
+            font-size: 16px;
+            text-align: center;
+            border: none;
+            border-radius: 6px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .info-button:hover {
+            background-color: #1e88e5;
+            transform: scale(1.05);
+        }
+        .info-section {
+            display: none;
+            margin-top: 30px;
+            background-color: #f1f8e9;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .info-section.show {
+            display: block;
+            opacity: 1;
+        }
+        .info-section h2 {
+            color: #4CAF50;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .info-section p {
+            color: #333;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Objednávka Bio Uhlí</h1>
+        <p>Vyplňte své údaje pro objednávku Bio Uhlí. K dispozici jsou 3L a 6L balení.</p>
+
+        <form action="submit_order.php" method="POST">
+            <div class="form-group">
+                <label for="name">Jméno</label>
+                <input type="text" id="name" name="name" placeholder="Vaše jméno" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Váš email" required>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Množství</label>
+                <select id="quantity" name="quantity" required>
+                    <option value="3L">3 L</option>
+                    <option value="6L">6 L</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="event">Vyberte akci</label>
+                <select id="event" name="event" required>
+                    <option value="Akce XXX">Akce XXX</option>
+                    <option value="Akce YYY">Akce YYY</option>
+                </select>
+            </div>
+            <input type="submit" value="Objednat">
+        </form>
+
+        <button class="info-button" onclick="toggleInfo()">Více informací o Bio Uhlí</button>
+
+        <div class="info-section" id="infoSection">
+            <h2>O Bio Uhlí pro rostliny</h2>
+            <p><strong>Bio Uhlí</strong> je ideální pro použití v zahradničení a pěstování rostlin. Je to ekologický materiál, který zlepšuje kvalitu půdy a podporuje růst rostlin. Bio Uhlí se používá jako přírodní hnojivo a pomáhá udržovat vlhkost v půdě, což je ideální pro rostliny v sušších obdobích. Mimo to také zlepšuje strukturu půdy a podporuje zdraví kořenového systému.</p>
+            <p>Naše Bio Uhlí je šetrné k přírodě a vyrobeno bez použití chemikálií. Pomáhá zadržovat uhlík v půdě, což přispívá ke snižování emisí CO₂. Je ideální pro ekologické farmáře a všechny, kdo chtějí podporovat zdravý růst rostlin s minimálním dopadem na životní prostředí.</p>
+            <p><strong>Proč použít Bio Uhlí?</strong></p>
+            <ul>
+                <li>Zlepšuje kvalitu půdy a podporuje růst rostlin.</li>
+                <li>Zadržuje vlhkost a pomáhá v sušších obdobích.</li>
+                <li>Podporuje zdravý kořenový systém rostlin.</li>
+                <li>Ekologický a šetrný k přírodě.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleInfo() {
+            var infoSection = document.getElementById("infoSection");
+            if (infoSection.style.display === "none" || infoSection.style.display === "") {
+                infoSection.classList.add("show");
+                infoSection.style.display = "block";
+            } else {
+                infoSection.classList.remove("show");
+                setTimeout(function() {
+                    infoSection.style.display = "none";
+                }, 500); // Wait for opacity transition
+            }
+        }
+    </script>
+
+</body>
+</html>
